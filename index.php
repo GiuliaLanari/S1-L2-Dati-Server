@@ -3,8 +3,9 @@
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $name = $_POST ["name"];
     $cognome = $_POST ["cognome"];
-    $email = $_POST ["email"];
     $città = $_POST ["città"];
+    $nazione = $_POST ["nazione"];
+    $email = $_POST ["email"];
     $password = $_POST ["password"];
 
     $errors =[];
@@ -24,9 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     if (strlen($città)=== 0){
         $errors["città"]= "Città non inserita";
     }
+    if (strlen($nazione)=== 0){
+        $errors["nazione"]= "Nazione non inserita";
+    }
 
-    if(strlen($password) > 10 || strlen($password) === 0){
-        $errors["password"]= "Password troppo lunga" || "Password non inserita";
+    if(strlen($password) > 10){
+        $errors["password"]= "Password troppo lunga deve essere meno di 10 caratteri" ;
+    }
+    if( strlen($password) === 0){
+        $errors["password"]= "Password non inserita";
     }
 
 
@@ -56,49 +63,47 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
 <h1 class="d-flex justify-content-center my-4">Registrati al nostro sito: </h1>
 <div class="container">
-
-<form action="" method="post" class="row g-3 needs-validation justify-content-center" novalidate>
-  <div class="col-md-7">
+<div class="row justify-content-center mx-auto"> 
+<form action="" method="post" class="col-5  g-3 needs-validation " novalidate> 
+    <div>
+  <div class="col-md-12" >
     <label for="name" class="form-label">Nome:</label>
     <input type="text" name="name" class="form-control" id="name" placeholder="Nome" >
    <div class="error text-danger "><?= $errors["name"]?? "" ?></div>
   </div>
-  <div class="col-md-7">
-    <label for="Cognome" class="form-label">Cognome:</label>
+  <div class="col-md-12">
+    <label for="cognome" class="form-label">Cognome:</label>
     <input type="text" class="form-control" name="cognome" id="cognome" placeholder="Cognome" required>
     <div class="error text-danger"><?= $errors["cognome"]?? "" ?></div>
   </div>
-  <div class="col-md-7">
-    <label for="email" class="form-label">Email:</label>
-    <input type="text" class="form-control" name="email" id="email" placeholder="exp@gmail.com"  required>
-    <div class="error text-danger"><?= $errors["email"]?? "" ?></div>
-  </div>
-  <div class="col-md-7">
-    <label for="città" class="form-label">Città:</label>
-    <input type="text" class="form-control" name="città" id="città" placeholder="Città"  required>
-    <div class="error text-danger"><?= $errors["città"]?? "" ?></div>
-  </div>
-  <div class="col-md-7">
+
+  <div class="col-md-12">
+      <label for="città" class="form-label">Città:</label>
+      <input type="text" class="form-control" name="città" id="città" placeholder="Città"  required>
+      <div class="error text-danger"><?= $errors["città"]?? "" ?></div>
+    </div>
+    <div class="col-md-12">
+        <label for="nazione" class="form-label">Nazione:</label>
+        <input type="text" class="form-control" name="nazione" id="nazione" placeholder="Nazione"  required>
+        <div class="error text-danger"><?= $errors["nazione"]?? "" ?></div>
+    </div>
+    <div class="col-md-12">
+      <label for="email" class="form-label">Email:</label>
+      <input type="text" class="form-control" name="email" id="email" placeholder="exp@gmail.com"  required>
+      <div class="error text-danger"><?= $errors["email"]?? "" ?></div>
+    </div>
+  <div class="col-md-12 mb-3">
     <label for="password" class="form-label">Password:</label>
     <input type="password" class="form-control" name="password" id="password" placeholder="Scegli una Password"  required>
     <div class="error text-danger"><?= $errors["password"]?? "" ?></div>
   </div>
-<!--  
-  <div class="col-md-7">
-    <label for="validationCustom03" class="form-label">City</label>
-    <input type="text" class="form-control" id="validationCustom03" required>
-    <div class="invalid-feedback">
-      Please provide a valid city.
-    </div>
-  </div> -->
-
 
   <div class="col-12 justify-content-center d-flex">
     <button class="btn btn-success" type="submit">Registrati</button>
   </div>
 </form>
 
-
+</div>
 
 </div>
 
