@@ -1,12 +1,12 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
-    $name = $_POST ["name"];
-    $cognome = $_POST ["cognome"];
-    $città = $_POST ["città"];
-    $nazione = $_POST ["nazione"];
-    $email = $_POST ["email"];
-    $password = $_POST ["password"];
+    $name = $_POST ["name"]?? "";
+    $cognome = $_POST ["cognome"]?? "";
+    $città = $_POST ["città"]?? "";
+    $nazione = $_POST ["nazione"]?? "";
+    $email = $_POST ["email"]?? "";
+    $password = $_POST ["password"]?? "";
 
     $errors =[];
 
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     <div>
   <div class="col-md-12" >
     <label for="name" class="form-label">Nome:</label>
-    <input type="text" name="name" class="form-control" id="name" placeholder="Nome" >
+    <input type="text" name="name" class="form-control " id="name" placeholder="Nome" >
    <div class="error text-danger "><?= $errors["name"]?? "" ?></div>
   </div>
   <div class="col-md-12">
@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     <input type="password" class="form-control" name="password" id="password" placeholder="Scegli una Password"  required>
     <div class="error text-danger"><?= $errors["password"]?? "" ?></div>
   </div>
-
+  
   <div class="col-12 justify-content-center d-flex">
     <button class="btn btn-success" type="submit">Registrati</button>
   </div>
