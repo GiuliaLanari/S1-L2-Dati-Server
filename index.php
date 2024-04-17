@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
     if($errors === []){
         header("Location: /S1-L2-Dati-Server/success-registrazione.php");
-    }
+    };
 
 
 }
